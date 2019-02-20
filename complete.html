@@ -8,46 +8,49 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-    <title>Il canzoniere</title>
+    <title>Il canzoniere V4</title>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
 
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
 
+    <a id="return-to-top"><i class="fas fa-chevron-up" style="color:white"></i></a>
+
+    <div class="container" style="width: 70%">
         <br>
-        <div class="row d-flex justify-content-between">
-            <div class="text-center">
+
+        <nav style="background: none" class="navbar navbar-light justify-content-between" id="nav">
+            <a class="navbar-brand text-center">
                 <h2>Il Canzoniere</h2>
-            </div>
+            </a>
+            <form class="form-inline">
+                <button type="button" class="btn btn-dark my-2 my-sm-0" id="theme">Change Theme</button>
+            </form>
+        </nav>
 
-            <div>
-                <button type="button" class="btn btn-dark" id="theme">Change Theme</button>
-            </div>
-
-        </div>
         <br>
 
         <div class="row">
-            <table class="table text-center mx-auto" style="width: 70%">
+            <table class="table text-center mx-auto">
                 <tbody id="foo">
 
                 </tbody>
             </table>
         </div>
-
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 
     <script>
@@ -86,8 +89,11 @@
         function darkTheme() {
             $("body").css("background-color", "#323439");
             $("body").css("color", "#f4f4f4");
-            document.getElementById("theme").classList.remove('btn-dark');
+            document.getElementById("theme").classList.remove('btn-dark');      /*modifica colori del bottone, sono l'opposto del tema*/
             document.getElementById("theme").classList.add('btn-light');
+
+            document.getElementById("nav").classList.remove('navbar-light');
+            document.getElementById("nav").classList.add('navbar-dark');
 
             for (var i = 0; i < titles.length; i++) {
                 document.getElementById(`link${i}`).classList.remove('badge-primary');
@@ -95,14 +101,17 @@
             };
 
             theme = "dark";
-            
+
         };
 
         function lightTheme() {
             $("body").css("background-color", "white");
             $("body").css("color", "#262525");
+            document.getElementById("theme").classList.remove('btn-light');     /*modifica colori del bottone, sono l'opposto del tema*/
             document.getElementById("theme").classList.add('btn-dark');
-            document.getElementById("theme").classList.remove('btn-light');
+
+            document.getElementById("nav").classList.remove('navbar-dark');
+            document.getElementById("nav").classList.add('navbar-light');
 
             for (var i = 0; i < titles.length; i++) {
                 document.getElementById(`link${i}`).classList.remove('badge-secondary');
@@ -111,19 +120,31 @@
 
 
             theme = "light";
-            
+
         };
 
+        // ===== Scroll to Top ==== 
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                $('#return-to-top').fadeIn(200);    // Fade in the arrow
+            } else {
+                $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+            }
+        });
+        $('#return-to-top').click(function () {      // When arrow is clicked
+            $('body,html').animate({
+                scrollTop: 0                       // Scroll to top of body
+            }, 500);
+        });
 
 
-        
+
+
 
     </script>
-    </div>
 
 
 
 </body>
 
 </html>
-
