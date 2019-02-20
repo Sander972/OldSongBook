@@ -8,21 +8,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="style.css">
+
     <title>Il canzoniere V4</title>
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
 
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <a id="return-to-top"><i class="fas fa-chevron-up" style="color:white"></i></a>
 
-    <div class="container" style="width: 70%">
+    <div class="container">
         <br>
 
         <nav style="background: none" class="navbar navbar-light justify-content-between" id="nav">
@@ -36,7 +44,7 @@
 
         <br>
 
-        <div class="row">
+        <div class="row " style="width: 70%">
             <table class="table text-center mx-auto">
                 <tbody id="foo">
 
@@ -44,13 +52,6 @@
             </table>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
 
 
     <script>
@@ -123,17 +124,17 @@
 
         };
 
-        
+
         $(window).scroll(function () {
-            if ($(this).scrollTop() >= 50) {        
-                $('#return-to-top').fadeIn(200);  
+            if ($(this).scrollTop() >= 50) {
+                $('#return-to-top').fadeIn(200);
             } else {
-                $('#return-to-top').fadeOut(200);   
+                $('#return-to-top').fadeOut(200);
             }
         });
-        $('#return-to-top').click(function () {     
+        $('#return-to-top').click(function () {
             $('body,html').animate({
-                scrollTop: 0                      
+                scrollTop: 0
             }, 500);
         });
 
