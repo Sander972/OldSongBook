@@ -32,13 +32,25 @@ function addSong(title, link, i) {
     document.getElementById('foo').appendChild(tr);
 }
 
+function sortByProperty(property){  
+    return function(a,b){  
+       if(a[property] > b[property])  
+          return 1;  
+       else if(a[property] < b[property])  
+          return -1;  
+   
+       return 0;  
+    }  
+ }
+
 
 function init() {
     loadJSON(function (response) {
         // Parse JSON string into object
         songBook = JSON.parse(response);
+        var ordinated = songBook.songs.sort(sortByProperty("title"));
 
-        songBook.songs.forEach(function (song, index) {
+        ordinated.forEach(function (song, index) {
             addSong(song.title, song.link, index);
             sbLength = index;
         });
