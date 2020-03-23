@@ -18,8 +18,6 @@ function init() {
         // Parse JSON string into object
         var actualJson = JSON.parse(response);
 
-        console.log(actualJson);
-
         actualJson.songs.forEach(function(song,index ){
             
             var tr = document.createElement('tr');
