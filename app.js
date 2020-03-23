@@ -20,7 +20,7 @@ function init() {
 
         console.log(actualJson);
 
-        actualJson.songs.forEach(function(song){
+        actualJson.songs.forEach(function(song,index ){
             
             var tr = document.createElement('tr');
             var th = document.createElement('th');
@@ -31,7 +31,7 @@ function init() {
             tr.appendChild(td);
             var a = document.createElement('a');
             a.setAttribute('href', "https://" + song.link);
-            a.setAttribute('id', 'link' + i);
+            a.setAttribute('id', 'link' + index);
             a.className = 'badge badge-primary';
             a.innerHTML += song.link;
             td.appendChild(a);
