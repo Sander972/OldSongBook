@@ -5,7 +5,7 @@ function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'songs.json', true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', 'songs.json', true);
     xobj.onreadystatechange = function () {
         if (xobj.readyState == 4 && xobj.status == "200") {
             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -32,16 +32,16 @@ function addSong(title, link, i) {
     document.getElementById('foo').appendChild(tr);
 }
 
-function sortByProperty(property){  
-    return function(a,b){  
-       if(a[property] > b[property])  
-          return 1;  
-       else if(a[property] < b[property])  
-          return -1;  
-   
-       return 0;  
-    }  
- }
+function sortByProperty(property) {
+    return function (a, b) {
+        if (a[property] > b[property])
+            return 1;
+        else if (a[property] < b[property])
+            return -1;
+
+        return 0;
+    }
+}
 
 
 function init() {
@@ -58,4 +58,21 @@ function init() {
     });
 }
 
-init();
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('./sw.js');
+        } catch (e) {
+            alert('ServiceWorker registration failed. Sorry about that.');
+        }
+    } else {
+        document.querySelector('.alert').removeAttribute('hidden');
+    }
+}
+
+window.addEventListener('load', e => {
+    init();
+    registerSW();
+});
+
+
