@@ -1,3 +1,6 @@
+var songBook;
+var sb_length;
+
 function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
@@ -12,29 +15,34 @@ function loadJSON(callback) {
     xobj.send(null);
 }
 
+function addSong(title, link, i) {
+    var tr = document.createElement('tr');
+    var th = document.createElement('th');
+    th.setAttribute('scope', 'row');
+    tr.appendChild(th);
+    th.innerHTML += title;
+    var td = document.createElement('td');
+    tr.appendChild(td);
+    var a = document.createElement('a');
+    a.setAttribute('href', "https://" + link);
+    a.setAttribute('id', 'link' + i);
+    a.className = 'badge badge-primary';
+    a.innerHTML += link;
+    td.appendChild(a);
+    document.getElementById('foo').appendChild(tr);
+}
+
 
 function init() {
     loadJSON(function (response) {
         // Parse JSON string into object
-        var actualJson = JSON.parse(response);
+        songBook = JSON.parse(response);
 
-        actualJson.songs.forEach(function(song,index ){
-            
-            var tr = document.createElement('tr');
-            var th = document.createElement('th');
-            th.setAttribute('scope', 'row');
-            tr.appendChild(th);
-            th.innerHTML += song.title;
-            var td = document.createElement('td');
-            tr.appendChild(td);
-            var a = document.createElement('a');
-            a.setAttribute('href', "https://" + song.link);
-            a.setAttribute('id', 'link' + index);
-            a.className = 'badge badge-primary';
-            a.innerHTML += song.link;
-            td.appendChild(a);
-            document.getElementById('foo').appendChild(tr);
-          });
+        songBook.songs.forEach(function (song, index) {
+            addSong(song.title,song.url,index);
+            sb_legth = index;
+        });
+        addSong("Total Songs:",sb_length,sb_length+1)
     });
 }
 
