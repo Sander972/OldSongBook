@@ -16,10 +16,7 @@ function loadJSON(callback) {
 function init() {
     loadJSON(function (response) {
         // Parse JSON string into object
-        var actualJson = JSON.parse(response);
-        //console.log(actual_JSON);
-
-        actualJson.forEach(function(song){
+        response.forEach(function(song){
             
             var tr = document.createElement('tr');
             var th = document.createElement('th');
