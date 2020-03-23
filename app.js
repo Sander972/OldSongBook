@@ -20,7 +20,7 @@ function init() {
 
         console.log(actualJson);
 
-        actualJson.forEach(function(song){
+        actualJson.songs.forEach(function(song){
             
             var tr = document.createElement('tr');
             var th = document.createElement('th');
