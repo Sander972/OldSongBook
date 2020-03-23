@@ -17,9 +17,26 @@ function init() {
     loadJSON(function (response) {
         // Parse JSON string into object
         var actual_JSON = JSON.parse(response);
-        console.log(actual_JSON);
+        //console.log(actual_JSON);
+
+        actual_JSON.forEach(function(song){
+            
+            var tr = document.createElement('tr');
+            var th = document.createElement('th');
+            th.setAttribute('scope', 'row');
+            tr.appendChild(th);
+            th.innerHTML += song.title;
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            var a = document.createElement('a');
+            a.setAttribute('href', "https://" + song.link);
+            a.setAttribute('id', 'link' + i);
+            a.className = 'badge badge-primary';
+            a.innerHTML += song.link;
+            td.appendChild(a);
+            document.getElementById('foo').appendChild(tr);
+          });
     });
 }
-
 
 init();
