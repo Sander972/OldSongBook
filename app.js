@@ -16,10 +16,10 @@ function loadJSON(callback) {
 function init() {
     loadJSON(function (response) {
         // Parse JSON string into object
-        var actual_JSON = JSON.parse(response);
+        var actualJson = JSON.parse(response);
         //console.log(actual_JSON);
 
-        actual_JSON.forEach(function(song){
+        actualJson.forEach(function(song){
             
             var tr = document.createElement('tr');
             var th = document.createElement('th');
